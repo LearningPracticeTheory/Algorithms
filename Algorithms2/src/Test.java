@@ -6,14 +6,15 @@ public class Test {
 	
 	public static void main(String args[]) {
 		Test test = new Test();
-//		test.execute();
+		test.execute();
 		test.curveGraphTest();
 	}
 	
 	public static final int T = 700; //time == height
 	public static final int N = 500; //numbers == width
-	public static final int MULTIPLE = 80; //InsertionSort & SelectionSort Test
-//	public static final int MULTIPLE = 1000; //ShellSort Test
+//	public static final int MULTIPLE = 50; //MergeSort.merge Test
+//	public static final int MULTIPLE = 80; //InsertionSort & SelectionSort Test
+	public static final int MULTIPLE = 1000; //ShellSort & MergeSort.sort12 Test
 	public static final int NUMS = N*MULTIPLE;
 	public static final int INCREASE = MULTIPLE;
 	public static final int RANGE = 100;
@@ -31,7 +32,10 @@ public class Test {
 			}
 //			InsertionSort.sort0(array);
 //			SelectionSort.sort0(array);
-			ShellSort.sort0(array);
+//			ShellSort.sort0(array); //faster than MergeSort
+//			MergeSort.sort(array, false);
+//			MergeSort.sort1(array, false);
+			MergeSort.sort2(array, false);
 			count = System.currentTimeMillis() - count;
 System.out.print(count + " ");
 			cg.draw(i/MULTIPLE, (int)count);
@@ -47,7 +51,10 @@ System.out.print(count + " ");
 		long started = System.currentTimeMillis();
 //		InsertionSort.sort(array); //9.732
 //		SelectionSort.sort(array); //6.695
-		ShellSort.sort(array);
+//		ShellSort.sort(array);
+//		MergeSort.sort(array, true);
+//		MergeSort.sort1(array, true);
+//		MergeSort.sort2(array, true);
 		System.out.println("runTime:" + (System.currentTimeMillis()-started)/1000.0 + "s");
 	}
 	
