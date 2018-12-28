@@ -93,6 +93,34 @@ public class MergeSort extends Sort {
 			}
 		}
 	}
+	
+	private static int index = 0;
+	private static int permanent[];
+	
+	/*
+	 * indirect merge sort
+	 * permanent[k] record the index of k_th element
+	 */
+	public static int[] sort3(int array[]) {
+		int N = array.length;
+		int tmpArray[] = new int[N]; //record the last permanents
+		permanent = new int[N];
+		
+		for(int i = 0; i < N; i++) {
+			permanent[i] = i;
+		}
+		
+		for(int i = 1; i < N; i += i) { //i is the merge size of sub-array
+			index = 0;
+			for(int k = 0; k < N; k++) {
+				tmpArray[k] = permanent[k];
+			}
+			for(int j = 0; j + i < N; j += (2*i)) { //j is the start index of merge
+				merge3(array, tmpArray, j, j+i-1, Math.min(N-1, j+2*i-1));
+			}
+		}
+		return permanent;
+	}
 
 	//tmpArray.length == array.length which is wasting memory
 	/*
@@ -170,6 +198,22 @@ public class MergeSort extends Sort {
 			for(int index = 0; index < isCompares.length; index++) {
 				isCompares[index] = false;
 			}
+		}
+	}
+	
+	private static void merge3(int[] array, int tmpArray[], int start, int middle, int end) {
+		int i = start, j = middle+1, m = middle;
+		for(int k = start; k <= end; k++) {
+			if(i > m) {
+				permanent[index] = tmpArray[j++]; //tmpArray is the last permanent
+			} else if(j > end) {
+				permanent[index] = tmpArray[i++];
+			} else if(array[tmpArray[i]] <= array[tmpArray[j]]) {
+				permanent[index] = tmpArray[i++];
+			} else {
+				permanent[index] = tmpArray[j++];
+			}
+			index++;
 		}
 	}
 	

@@ -8,6 +8,7 @@ public class Test {
 		Test test = new Test();
 		test.execute();
 		test.curveGraphTest();
+//		test.indirectSort();
 	}
 	
 	public static final int T = 700; //time == height
@@ -35,7 +36,8 @@ public class Test {
 //			ShellSort.sort0(array); //faster than MergeSort
 //			MergeSort.sort(array, false);
 //			MergeSort.sort1(array, false);
-			MergeSort.sort2(array, false);
+//			MergeSort.sort2(array, false);
+			MergeSort.sort3(array);
 			count = System.currentTimeMillis() - count;
 System.out.print(count + " ");
 			cg.draw(i/MULTIPLE, (int)count);
@@ -54,8 +56,29 @@ System.out.print(count + " ");
 //		ShellSort.sort(array);
 //		MergeSort.sort(array, true);
 //		MergeSort.sort1(array, true);
-//		MergeSort.sort2(array, true);
+		MergeSort.sort2(array, true);
 		System.out.println("runTime:" + (System.currentTimeMillis()-started)/1000.0 + "s");
+	}
+	
+	public void indirectSort() {
+		int array[] = new int[10];
+		System.out.print("orignal: ");
+		for(int i = 0; i < array.length; i++) {
+			array[i] = r.nextInt(array.length-1);
+			System.out.print(array[i] + " ");
+		}
+		System.out.println();
+		int permanent[] = MergeSort.sort3(array);
+		System.out.print("permanent: ");
+		for(int i = 0; i < permanent.length; i++) {
+			System.out.print(permanent[i] + " ");
+		}
+		System.out.println();
+		System.out.print("sorted: ");
+		for(int i = 0; i < permanent.length; i++) {
+			System.out.print(array[permanent[i]] + " ");
+		}
+		System.out.println();
 	}
 	
 }
