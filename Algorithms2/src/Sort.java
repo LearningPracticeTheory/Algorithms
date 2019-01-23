@@ -19,4 +19,24 @@ public abstract class Sort {
 		return true;
 	}
 	
+	public static void compareDraw(boolean type, int array[], int index) {
+		if(type) {
+			isCompares[index] = true;
+			bc.draw(array, isCompares);
+			for(int k = 0; k < isCompares.length; k++) {
+				isCompares[k] = false;
+			}
+		}
+	}
+	
+	public static void compareDraw(boolean type, int array[], int index1, int index2) {
+		if(type) {
+			isCompares[index1] = isCompares[index2] = true;
+			bc.draw(array, isCompares);
+			for(int k = 0; k < isCompares.length; k++) {
+				isCompares[k] = false;
+			}
+		}
+	}
+	
 }

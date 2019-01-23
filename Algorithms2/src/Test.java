@@ -15,10 +15,10 @@ public class Test {
 	public static final int N = 500; //numbers == width
 //	public static final int MULTIPLE = 50; //MergeSort.merge Test
 //	public static final int MULTIPLE = 80; //InsertionSort & SelectionSort Test
-	public static final int MULTIPLE = 1000; //ShellSort & MergeSort.sort12 Test
+	public static final int MULTIPLE = 1000; //ShellSort & MergeSort & QuickSort Test
 	public static final int NUMS = N*MULTIPLE;
 	public static final int INCREASE = MULTIPLE;
-	public static final int RANGE = 100;
+	public static final int RANGE = 10000;
 	
 	public void curveGraphTest() {
 		int array[];
@@ -37,7 +37,10 @@ public class Test {
 //			MergeSort.sort(array, false);
 //			MergeSort.sort1(array, false);
 //			MergeSort.sort2(array, false);
-			MergeSort.sort3(array);
+//			MergeSort.sort3(array);
+//			QuickSort.sort(array, false);
+//			QuickSort.sort2(array, false);
+			QuickSort.sort1(array, false);
 			count = System.currentTimeMillis() - count;
 System.out.print(count + " ");
 			cg.draw(i/MULTIPLE, (int)count);
@@ -49,6 +52,7 @@ System.out.print(count + " ");
 //		int array[] = new int[50];
 		for(int i = 0; i < array.length; i++) {
 			array[i] = r.nextInt(array.length-1);
+//			array[i] = i; //the pivot is minimum/maximum will throw Exception
 		}
 		long started = System.currentTimeMillis();
 //		InsertionSort.sort(array); //9.732
@@ -56,7 +60,10 @@ System.out.print(count + " ");
 //		ShellSort.sort(array);
 //		MergeSort.sort(array, true);
 //		MergeSort.sort1(array, true);
-		MergeSort.sort2(array, true);
+//		MergeSort.sort2(array, true);
+//		QuickSort.sort(array, true);
+//		QuickSort.sort2(array, true);
+		QuickSort.sort1(array, true);
 		System.out.println("runTime:" + (System.currentTimeMillis()-started)/1000.0 + "s");
 	}
 	
