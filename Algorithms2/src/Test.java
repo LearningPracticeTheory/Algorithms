@@ -31,16 +31,18 @@ public class Test {
 			for(int k = 0; k < i; k++) {
 				array[k] = r.nextInt(RANGE);
 			}
-//			InsertionSort.sort0(array);
-//			SelectionSort.sort0(array);
-//			ShellSort.sort0(array); //faster than MergeSort
-//			MergeSort.sort(array, false);
-//			MergeSort.sort1(array, false);
-//			MergeSort.sort2(array, false);
-//			MergeSort.sort3(array);
-//			QuickSort.sort(array, false);
-//			QuickSort.sort2(array, false);
-			QuickSort.sort1(array, false);
+//			InsertionSort.sort(array, false);
+//			SelectionSort.sort(array, false);
+//			ShellSort.sort(array, false); //73
+//			ShellSort.sort1(array, false); //74
+//			MergeSort.sort(array, false); //63
+//			MergeSort.sort1(array, false); //57
+//			MergeSort.sort2(array, false); //59
+//			MergeSort.sort3(array); //76
+//			QuickSort.sort(array, false); //44
+//			QuickSort.sort2(array, false); //47
+//			QuickSort.sort1(array, false); //43
+			HeapSort.sort(array, false); //65
 			count = System.currentTimeMillis() - count;
 System.out.print(count + " ");
 			cg.draw(i/MULTIPLE, (int)count);
@@ -55,15 +57,17 @@ System.out.print(count + " ");
 //			array[i] = i; //the pivot is minimum/maximum will throw Exception
 		}
 		long started = System.currentTimeMillis();
-//		InsertionSort.sort(array); //9.732
-//		SelectionSort.sort(array); //6.695
-//		ShellSort.sort(array);
+//		InsertionSort.sort(array, true);
+//		SelectionSort.sort(array, true);
+//		ShellSort.sort(array, true);
+//		ShellSort.sort1(array, true);
 //		MergeSort.sort(array, true);
 //		MergeSort.sort1(array, true);
 //		MergeSort.sort2(array, true);
 //		QuickSort.sort(array, true);
 //		QuickSort.sort2(array, true);
-		QuickSort.sort1(array, true);
+//		QuickSort.sort1(array, true);
+		HeapSort.sort(array, true);
 		System.out.println("runTime:" + (System.currentTimeMillis()-started)/1000.0 + "s");
 	}
 	
