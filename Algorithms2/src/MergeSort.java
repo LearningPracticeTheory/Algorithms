@@ -1,7 +1,6 @@
 
 public class MergeSort extends Sort {
 
-	private static boolean type; //true Bar; false Curve
 	private static final int RANGE = 10;
 	
 	/*
@@ -67,11 +66,18 @@ public class MergeSort extends Sort {
 			for(j = i; j > start; j--) {
 				if(array[j-1] > tmp) {
 					array[j] = array[j-1];
+					if(type) {
+						isCompares[j] = true;
+					}
 				} else {
 					break;
 				}
 			}
 			array[j] = tmp;
+			if(type) {
+				isCompares[j] = true;
+			}
+			compareDraw(array);
 		}
 	}
 	
@@ -193,12 +199,7 @@ public class MergeSort extends Sort {
 			}
 		}
 		
-		if(type) {	
-			bc.draw(array, isCompares);
-			for(int index = 0; index < isCompares.length; index++) {
-				isCompares[index] = false;
-			}
-		}
+		compareDraw(array);
 	}
 	
 	private static void merge3(int[] array, int tmpArray[], int start, int middle, int end) {

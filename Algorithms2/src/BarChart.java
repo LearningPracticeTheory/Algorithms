@@ -61,6 +61,11 @@ public class BarChart extends JFrame {
 /*显示一次外循环中参与比较的元素*/	
 	public void paint(Graphics g) {
 		super.paint(g);
+		
+		if(array == null) {
+			return;
+		}
+		
 		Color c = g.getColor();
 		g.setColor(Color.GREEN);
 		for(int i = 0; i < array.length; i++) {

@@ -1,8 +1,6 @@
 
 public class QuickSort extends Sort {
 
-	private static boolean type;
-	
 	public static void sort(int array[], boolean flag) {
 		type = flag;
 		if(type) {
@@ -23,23 +21,17 @@ public class QuickSort extends Sort {
 		int i = start, j = end+1;
 		int pivot = array[start];
 		while(true) {
-			/*
+			
 			while(array[++i] < pivot) if(i == end) break;
 			while(pivot < array[--j]) if(j == start) break;
-			*/
+			/* ERROR
 			while(array[++i] < pivot) { }
 			while(pivot < array[--j]) { }
-			
+			*/
 			if(i >= j) break;
 			swap(array, i, j);
 			
-			if(type) {
-				isCompares[i] = isCompares[j] = true;
-				bc.draw(array, isCompares);
-				for(int index = 0; index < isCompares.length; index++) {
-					isCompares[index] = false;
-				}
-			}
+			compareDraw(array, i, j);
 		}
 		swap(array, start, j);
 		return j;
@@ -65,11 +57,11 @@ public class QuickSort extends Sort {
 		int pivot = array[start];
 		while(index <= j) {
 			if(pivot > array[index]) {
-				compareDraw(type, array, i, index);
+				compareDraw(array, i, index);
 				swap(array, i++, index++);
 			} else if(pivot < array[index]) {
 				swap(array, index, j--);
-				compareDraw(type, array, j, index);
+				compareDraw(array, j, index);
 			} else {
 				index++;
 			}
@@ -103,12 +95,11 @@ public class QuickSort extends Sort {
 				while(array[--j] > pivot) { } 
 				if(i >= j) break;
 				swap(array, i, j);
-				compareDraw(type, array, i, j);
+				compareDraw(array, i, j);
 			}
 			swap(array, i, end-1);
-			if(type) {	
-				compareDraw(type, array, i, end-1);
-			}
+			compareDraw(array, i, end-1);
+			
 			sort2(array, start, i-1);
 			sort2(array, i+1, end);
 		}
@@ -136,13 +127,18 @@ public class QuickSort extends Sort {
 			for(j = i-1; j >= start; j--) {
 				if(array[j] > tmp) {
 					array[j+1] = array[j];
-					compareDraw(type, array, j+1);
+					if(type) {
+						isCompares[j+1] = true;
+					}
 				} else {
 					break;
 				}
 			}
 			array[j+1] = tmp;
-			compareDraw(type, array, j+1);
+			if(type) {
+				isCompares[j+1] = true;
+			}
+			compareDraw(array);
 		}
 	}
 	
