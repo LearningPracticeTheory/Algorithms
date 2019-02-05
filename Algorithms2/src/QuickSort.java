@@ -17,7 +17,7 @@ public class QuickSort extends Sort {
 		sort(array, index+1, end);
 	}
 
-	private static int partition(int[] array, int start, int end) {
+	public static int partition(int[] array, int start, int end) {
 		int i = start, j = end+1;
 		int pivot = array[start];
 		while(true) {

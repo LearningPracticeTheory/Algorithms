@@ -6,9 +6,10 @@ public class Test {
 	
 	public static void main(String args[]) {
 		Test test = new Test();
-		test.execute();
-		test.curveGraphTest();
+//		test.execute();
+//		test.curveGraphTest();
 //		test.indirectSort();
+		test.searchKTest();
 	}
 	
 	public static final int T = 700; //time == height
@@ -90,6 +91,35 @@ System.out.print(count + " ");
 			System.out.print(array[permanent[i]] + " ");
 		}
 		System.out.println();
+	}
+	
+	public void searchKTest() {
+		int array[] = new int[20];
+		System.out.print("orignal: ");
+		for(int i = 0; i < array.length; i++) {
+			array[i] = r.nextInt(array.length*2);
+			System.out.print(array[i] + " ");
+		}
+		int k = r.nextInt(array.length);
+		int element = searchK(array, k);
+		System.out.println("\n array[" + k + "] == " + element);
+		QuickSort.sort1(array, false);
+		System.out.print("sorted: ");
+		for(int i = 0; i < array.length; i++) {
+			System.out.print(array[i] + " ");
+		}
+		System.out.println("\n element equals array[k] ? " + (element == array[k]));
+	}
+	
+	public int searchK(int array[], int k) { //select
+		int start = 0, end = array.length-1;
+		while(end > start) {
+			int index = QuickSort.partition(array, start, end); //element classification
+			if(index == k) return array[k];
+			else if(index > k) end = index-1;
+			else if(index < k) start = index+1;
+		}
+		return array[k];
 	}
 	
 }
