@@ -101,7 +101,8 @@ System.out.print(count + " ");
 			System.out.print(array[i] + " ");
 		}
 		int k = r.nextInt(array.length);
-		int element = searchK(array, k);
+//		int element = searchK(array, k);
+		int element = searchKRecursive(array, k);
 		System.out.println("\n array[" + k + "] == " + element);
 		QuickSort.sort1(array, false);
 		System.out.print("sorted: ");
@@ -118,6 +119,20 @@ System.out.print(count + " ");
 			if(index == k) return array[k];
 			else if(index > k) end = index-1;
 			else if(index < k) start = index+1;
+		}
+		return array[k];
+	}
+	
+	public int searchKRecursive(int array[], int k) {
+		return searchKRecursive(array, k, 0, array.length-1);
+	}
+	
+	private int searchKRecursive(int array[], int k, int start, int end) {
+		if(end > start) {
+			int index = QuickSort.partition(array, start, end);
+			if(index > k) searchKRecursive(array, k, start, index-1);
+			else if(index < k) searchKRecursive(array, k, index+1, end);
+			else return array[k];
 		}
 		return array[k];
 	}
